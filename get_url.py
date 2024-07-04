@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from os import name
 from subprocess import run
 from sys import argv
 
@@ -19,5 +18,4 @@ def main(count: int) -> None:
 
 
 if __name__ == "__main__":
-    if name != "nt":
-        main(int(argv[1]) if len(argv) > 1 else 1)
+    main(int(argv[1]) if len(argv) > 1 else 1)
