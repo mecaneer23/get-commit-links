@@ -15,3 +15,7 @@ Example: fetching the 3 most recent commits in the current working directory
 ```bash
 python3 get_url.py 3
 ```
+
+## Todo
+
+- feat: if count isn't specified automatically return all commits from the past hour
