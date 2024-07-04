@@ -19,3 +19,4 @@ python3 get_url.py 3
 ## Todo
 
 - feat: if count isn't specified automatically return all commits from the past hour
+  - feat: add argparse; allow for specifying an amount of commits or an amount of time
