@@ -16,7 +16,12 @@ Example: fetching the 3 most recent commits in the current working directory
 python3 get_url.py 3
 ```
 
-## Todo
+Specify a negative number to fetch commits since `-n` hours ago
 
-- feat: if count isn't specified automatically return all commits from the past hour
-  - feat: add argparse; allow for specifying an amount of commits or an amount of time
+```bash
+# getting commits from the last 2 hours
+python3 get_url.py
+
+# getting commits from the last 5 hours
+python3 get_url.py -5
+```

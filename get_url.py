@@ -19,8 +19,9 @@ def main(count: int) -> None:
         .rstrip()
         .removesuffix(".git")
     )
+    command = f"git log -n {count}" if count > 0 else f"git log --since \"{-count} hours ago\""
     git_log = run(
-        f"git log -n {count}".split(),
+        command.split(),
         capture_output=True,
         check=True,
     ).stdout.decode()
@@ -30,4 +31,4 @@ def main(count: int) -> None:
 
 
 if __name__ == "__main__":
-    main(int(argv[1]) if len(argv) > 1 else 1)
+    main(int(argv[1]) if len(argv) > 1 else -2)
