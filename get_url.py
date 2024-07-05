@@ -19,9 +19,13 @@ def main(count: int) -> None:
         .rstrip()
         .removesuffix(".git")
     )
-    command = f"git log -n {count}" if count > 0 else f"git log --since \"{-count} hours ago\""
+    command = (
+        f"git log -n {count}".split()
+        if count > 0
+        else ("git", "log", "--since", f"{-count} hours ago")
+    )
     git_log = run(
-        command.split(),
+        command,
         capture_output=True,
         check=True,
     ).stdout.decode()
