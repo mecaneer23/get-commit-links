@@ -1,0 +1,9 @@
+form {
+    width: 50vw;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+form label, form input, button {
+    display: block;
+}
