@@ -4,11 +4,17 @@ async function fetchCommits(user, repo) {
     );
 }
 
-function getCommitsSince(time, commits) {
-    return commits.filter((commit) => new Date(commit.commit.committer.date) < time);
+function getCommitsSince(hours_ago, commits) {
+    const ONE_HOUR = 60 * 60 * 1000;
+    const time = new Date(new Date() - ONE_HOUR * hours_ago);
+    return commits.filter(commit => new Date(commit.commit.committer.date) > time);
+}
+
+function getNCommits(n, commits) {
+    commits.length = n;
+    return commits;
 }
 
 async function getCommits() {
-    const ONE_HOUR = 60 * 60 * 1000;
-    console.log(getCommitsSince(new Date(new Date() + ONE_HOUR), await fetchCommits("mecaneer23", "mecaneer23")))
+    await fetchCommits("mecaneer23", "mecaneer23")
 }
