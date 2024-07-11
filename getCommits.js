@@ -1,6 +1,12 @@
 async function fetchCommits(user, repo) {
     return fetch(`https://api.github.com/repos/${user}/${repo}/commits`).then(
-        response => response.json()
+        response => {
+            if (!response.ok) {
+                alert("Error: invalid username or repository name");
+                return;
+            }
+            return response.json();
+        }
     );
 }
 
@@ -29,9 +35,7 @@ async function getCommits() {
         ? getNCommits(count, commits)
         : getCommitsSince(count, commits);
     document.querySelector("button").style.display = "block";
-    if (filteredCommits.length != 1) {
-        document.getElementById("potential-s").innerHTML = "s";
-    }
+    document.getElementById("potential-s").innerHTML = filteredCommits.length == 1 ? "" : "s";
     document.getElementById("commit-count").innerHTML = filteredCommits.length;
     textarea.value = formatCommits(filteredCommits);
     textarea.style.display = "block";
