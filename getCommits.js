@@ -15,6 +15,38 @@ function getNCommits(n, commits) {
     return commits;
 }
 
-async function getCommits() {
-    await fetchCommits("mecaneer23", "mecaneer23")
+function formatCommits(commits) {
+    return commits.map(commit => commit.html_url).join("\n\n");
 }
+
+async function getCommits() {
+    const user = document.getElementById("user").value;
+    const repo = document.getElementById("repo").value;
+    const count = parseInt(document.getElementById("count").value);
+    const hoursOrCommitCount = document.getElementById("hoursOrCommitCount");
+    const commits = await fetchCommits(user, repo);
+    const filteredCommits = hoursOrCommitCount.checked
+        ? getNCommits(count, commits)
+        : getCommitsSince(count, commits);
+    const button = document.querySelector("button");
+    button.style.display = "block";
+    if (filteredCommits.length != 1) {
+        button.innerHTML += "s";
+    }
+    document.getElementById("commit-count").innerHTML = filteredCommits.length;
+    const textarea = document.querySelector("textarea");
+    textarea.value = formatCommits(filteredCommits);
+    textarea.style.display = "block";
+}
+
+function copy() {
+    // TODO: implement copy
+    alert("Copy not supported yet");
+}
+
+const countLabel = document.getElementById("count-label");
+
+document.getElementById("hoursOrCommitCount")
+    .addEventListener("change", event => {
+        countLabel.innerHTML = event.currentTarget.checked ? "Commit count" : "Hours";
+    });

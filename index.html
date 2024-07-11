@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form>
-        <label for="user" required>User <span class="required">*</span></label>
-        <input type="text" id="user">
-        <label for="repo" required>Repo <span class="required">*</span></label>
-        <input type="text" id="repo">
-        <label for="hours">Hours</label>
-        <input type="number" id="hours" value="2">
-        <label for="commits">Commits</label>
-        <input type="number" id="commits">
-        <input type="submit" value="Submit">
+    <form action="javascript:getCommits()">
+        <label for="user">User <span class="required">*</span></label>
+        <input type="text" id="user" required>
+        <label for="repo">Repo <span class="required">*</span></label>
+        <input type="text" id="repo" required>
+        <label for="hoursOrCommitCount">Default hours, check to specify number of commits</label>
+        <input type="checkbox" id="hoursOrCommitCount">
+        <label for="count" id="count-label">Hours</label>
+        <input type="number" id="count" value="2">
+        <input type="submit">
     </form>
     <br>
-    <button>Copy <span class="commit-count">0</span> commits</button>
-    <textarea ></textarea>
+    <textarea></textarea>
+    <button onclick="copy()">Copy <span id="commit-count">0</span> commit</button>
     <script src="getCommits.js"></script>
 </body>
 </html>

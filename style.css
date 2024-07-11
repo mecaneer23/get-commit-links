@@ -4,6 +4,16 @@ form {
     grid-template-columns: auto auto;
 }
 
-form label, form input, button {
+form label, form input {
     display: block;
+}
+
+button {
+    display: none;
+}
+
+textarea {
+    display: none;
+    width: 50vw;
+    height: 10vh;
 }
