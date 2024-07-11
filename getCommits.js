@@ -28,22 +28,21 @@ async function getCommits() {
     const filteredCommits = hoursOrCommitCount.checked
         ? getNCommits(count, commits)
         : getCommitsSince(count, commits);
-    const button = document.querySelector("button");
-    button.style.display = "block";
+    document.querySelector("button").style.display = "block";
     if (filteredCommits.length != 1) {
-        button.innerHTML += "s";
+        document.getElementById("potential-s").innerHTML = "s";
     }
     document.getElementById("commit-count").innerHTML = filteredCommits.length;
-    const textarea = document.querySelector("textarea");
     textarea.value = formatCommits(filteredCommits);
     textarea.style.display = "block";
 }
 
 function copy() {
-    // TODO: implement copy
-    alert("Copy not supported yet");
+    alert("Copied to clipboard");
+    navigator.clipboard.writeText(textarea.value);
 }
 
+const textarea = document.querySelector("textarea");
 const countLabel = document.getElementById("count-label");
 
 document.getElementById("hoursOrCommitCount")
