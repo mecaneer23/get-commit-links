@@ -8,10 +8,6 @@ form label + * {
     margin-left: 2vw;
 }
 
-form input[type="number"] {
-    width: 10vw;
-}
-
 form div {
     display: flex;
     justify-content: space-between;
