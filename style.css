@@ -2,6 +2,7 @@ form {
     margin-top: 20vh;
     display: flex;
     flex-direction: column;
+    gap: 1vh;
 }
 
 form label + * {
@@ -11,6 +12,14 @@ form label + * {
 form div {
     display: flex;
     justify-content: space-between;
+}
+
+form input {
+    border: none;
+}
+
+form input[type="button"], input[type="submit"] {
+    border-radius: 2vh;
 }
 
 button {
