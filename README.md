@@ -2,6 +2,8 @@
 
 Fetch public links to most recent git commits locally
 
+![Screenshot](GetCommitLinks.png)
+
 ## Usage
 
 Run in a terminal in the same directory as your git repository. By default, get commits from the last two hours.
